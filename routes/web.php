@@ -20,3 +20,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/aboutus', function () {
+    return view('aboutus');
+});
+
+Route::get('/contactus', function () {
+    return view('contactus');
+});
+
+Route::get('/areas', function () {
+    return view('areas');
+});
+Route::get('/calendar', function () {
+    return view('calendar');
+});
