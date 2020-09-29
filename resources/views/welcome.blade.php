@@ -27,7 +27,23 @@
     </div>
 </div>
 <!-- Second Grid -->
-<!-- <div class="dimasol-row-padding dimasol-light-grey dimasol-padding-64 dimasol-container">
+<div class="dimasol-row-padding dimasol-light-grey dimasol-padding-64 dimasol-container">
+    <div class="dimasol-container" id="contact">
+        <h2>Contacto</h2>
+        <i class="fa fa-map-marker dimasol-text-blue" style="width:30px"></i>Calle Cristóbal de Olid #69 Col. Inf. Conquistadores, Cd. Rio Bravo, Tamaulipas. C.P. 88993<br>
+        <i class="fa fa-phone dimasol-text-blue" style="width:30px"></i> Cels: (899) 170 2597 / (899)981 5421<br>
+        <i class="fa fa-phone-square dimasol-text-blue" style="width:30px"></i> Tel. Oficina: 933 - 81 - 10<br>
+        <i class="fa fa-envelope dimasol-text-blue" style="width:30px"> </i> Correo: <a href="mailto:dimasolrb.2016@hotmail.com">dimasolrb.2016@hotmail.com</a><br>
+        <form action="mailto:linx002xbox@gmail.com" method="GET">
+            <p><input class="dimasol-input dimasol-padding-16 dimasol-border" type="text" placeholder="Name" required name="subject"></p>
+            <p><input class="dimasol-input dimasol-padding-16 dimasol-border" type="text" placeholder="Email" required name="cc"></p>
+            <p><input class="dimasol-input dimasol-padding-16 dimasol-border" type="text" placeholder="Message" required name="body"></p>
+            <p><button class="dimasol-button dimasol-black dimasol-padding-large" value="send" type="submit">Enviar mensaje</button></p>
+        </form>
+    </div>
+</div>
+
+    <!-- <div class="dimasol-row-padding dimasol-light-grey dimasol-padding-64 dimasol-container">
         <div class="dimasol-content">
             <div class="dimasol-third dimasol-center">
                 <i class="fa fa-coffee dimasol-padding-64 dimasol-text-red dimasol-margin-right"></i>
@@ -42,4 +58,4 @@
             </div>
         </div>
     </div> -->
-@endsection
+    @endsection
