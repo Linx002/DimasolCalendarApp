@@ -35,3 +35,18 @@ Route::get('/areas', function () {
 Route::get('/calendar', function () {
     return view('calendar');
 });
+Route::get('/calendar', 'CalendarController@Index');
+
+Route::get('/calendar/create', 'CalendarController@Create');
+
+Route::post('/calendar/create', 'CalendarController@Store');
+
+Route::get('/calendar/delete/{id}', 'CalendarController@Delete');
+
+Route::delete('/calendar/delete', 'CalendarController@Remove');
+
+Route::get('/calendar/edit/{id}', 'CalendarController@Edit');
+
+Route::post('/calendar/edit', 'CalendarController@Update');
+
+Route::get('/calendar/{id}', 'CalendarController@DetailsMaster');
