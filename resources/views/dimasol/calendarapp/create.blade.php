@@ -2,7 +2,7 @@
 @section('content')
 <div class="dimasol-row-padding dimasol-padding-32 dimasol-container">
     <h1 class="dimasol-margin dimasol-jumbo">DIMASOL Industrial</h1>
-    <form class="dimasol-row-padding dimasol-padding-32 dimasol-container" method="POST" action="/calendar/create">
+    <form action="/calendar/create" method="POST" class="dimasol-row-padding dimasol-padding-32 dimasol-container">
         @csrf
         <div class="dimasol-container dimasol-half">
             <ul class="list-group list-group-flush">
@@ -33,7 +33,7 @@
         </div>
 
     </form>
-    <button type="submit" class="btn btn-success">Create</button>
+   <button type="submit" class="btn btn-success">Create</button>
     <button type="reset" class="btn btn-warning">Reset</button>
       </div>
     @endsection

@@ -39,18 +39,14 @@ class CalendarController extends Controller
         $deleteOneResult = $collection->deleteOne(
             ["_id" => new \MongoDB\BSON\ObjectId(request('projectid'))]
         );
-        // if ($deleteOneResult->getDeletedCount() == 1)
-        //     return redirect(route('GameRemoved'))->with('mssg', "Game deleted successfully")->with("alerttype", "danger");
-        // else
-        //     return redirect(route('GameRemoved'))->with('mssg', "Game was not deleted. Try again later.")->with("alerttype", "warning");
         return redirect('/calendar/index');
     }
 
     public function Create()
     {
         $collection = (new MongoDB\Client)->DIMASOL->Projects;
-        $project = $collection->find();
-        return view('dimasol.calendarapp.create',["projectName"=>$projectName, "description"=>$description, "company"=>$company,"area"=>$area, "startDate"=>$startDate, "endDate"=>$endDate, "requisitedBy"=> $requisitedBy, "consumables" => $consumables]);
+        $projects = $collection->find();
+        return view('dimasol.calendarapp.create', ["Projects"=>$projects]);
     }
 
     //to store/edit/delete

@@ -17,7 +17,7 @@
                     <th scope="col">Nombre del proyecto</th>
                     <th scope="col">Descripcion del proyecto</th>
                     <th scope="col">Compañia</th>
-                    <th scope="col">Área</th>
+                    <th scope="col">Fecha de Inicio</th>
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
@@ -29,11 +29,16 @@
                     <td>{{$project->description}}</td>
                     <td>{{$project->company}}</td>
                     <!--<td>{{$project->area}}</td>-->
-                    <td>{{$project->startDate}}</td>
+                        @php
+                    $utcDateTime = $project->startDate;
+                    $dateTime = $utcDateTime->toDateTime();
+                    $showDate = (string)$dateTime->format('d/m/y H:i:s');
+                    @endphp
+                    <td>{{$showDate}}</td>
                     <td>
-                        <button class="dimasol-btn dimasol-border-black"><a href="/calendar/{{$project->_id}}">Details</a></button>
-                        <button class="dimasol-btn dimasol-border-black"><a href="/calendar/edit/{{$project->_id}}">Edit</a></button>
-                        <button class="dimasol-btn dimasol-border-black"><a href="/calendar/delete/{{$project->_id}}">Delete</a></button>
+                        <a href="/calendar/{{$project->_id}}">Detalles</a>
+                        <a href="/calendar/edit/{{$project->_id}}">Editar</a>
+                        <a href="/calendar/delete/{{$project->_id}}">Borrar</a>
                     </td>
                 </tr>
                 @endforeach

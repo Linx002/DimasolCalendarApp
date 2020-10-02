@@ -40,40 +40,34 @@
 </style>
 
 <body>
-    function openTab(user-settings) {
-    var i, x;
-    x = document.getElementsByClassName("containerTab");
-    for (i = 0; i < x.length; i++) { x[i].dimasol-hide ; } document.getElementById(tabName).style.display="dimasol-block" ; } <div class="dimasol-top dimasol-blue dimasol-rigth-align dimasol-hide-small">
-        <div class="dimasol-bar dimasol-blue dimasol-card dimasol-left-align dimasol-large dimasol-hide-small">
+    <div class="dimasol-top dimasol-blue dimasol-rigth-align dimasol-hide-small">
+        <div class="dimasol-container dimasol-bar dimasol-blue dimasol-card dimasol-left-align dimasol-large dimasol-hide-small">
             <a href="/" class="dimasol-bar-item dimasol-button dimasol-white">Inicio</a>
             <a href="/aboutus" class="dimasol-bar-item dimasol-button dimasol-hover-white">Acerca de </a>
             <a href="/areas" class="dimasol-bar-item dimasol-button dimasol-hover-white">Areas</a>
             <a href="/calendar" class="dimasol-bar-item dimasol-button dimasol-hover-white">Aplicacion</a>
             <a href="/contactus" class="dimasol-bar-item dimasol-button dimasol-hover-white">Contacto</a>
-            <div>
-                @guest
-                <a href="{{ route('register') }}" class="dimasol-bar-item dimasol-button dimasol-hover-white">Registro</a>
-                @if (Route::has('register'))
-                <a href="{{ route('login') }}" class="dimasol-bar-item dimasol-button dimasol-hover-white">Inicia sesion</a>
-                @endif
-                @else
-                <div class="dimasol-blue dimasol-card dimasol-left-align dimasol-large dimasol-hide-small">
-                    <button class="dimasol-blue dimasol-bar-item dimasol-button dimasol-hover-white collapsible" onclick="openTab('user-settings');">{{ Auth::user()->name }}</button>
-                    <span onclick="this.parentElement.style.display='none'" class="containerTab">Cerrar Sesion</span>
-
-                </div>
-                @endguest
+            <div class="dimasol-dropdown-hover dimasol-light-blue">
+                @if (Route::has('login'))
+                @auth
+                <button class="dimasol-hover-white dimasol-button">{{ Auth::user()->name }}</button>
+                    <div class="dimasol-bar-block dimasol-dropdown-content dimasol-border">
+                        <a href="/" class="dimasol-button dimasol-bar-item">Ir a página principal</a>
+                        <a href="{{ route('logout') }}" class="dimasol-button dimasol-bar-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                        </form>
+                        @else
+                        <a href="{{ route('login') }}" class="dimasol-bar-item dimasol-button">Inicia sesion</a>
+                        @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="dimasol-bar-item dimasol-button">Registro</a>
+                        @endif
+                        @endauth
+                        @endif
+                    </div>
             </div>
         </div>
-
-        <!-- Navbar on small screens -->
-        <div class="dimasol-bar-block dimasol-white dimasol-hide dimasol-hide-large dimasol-hide-medium dimasol-large">
-            <a href="/aboutus" class="dimasol-bar-item dimasol-button">Acerca de</a>
-            <a href="/areas" class="dimasol-bar-item dimasol-button">Areas</a>
-            <a href="/calendar" class="dimasol-bar-item dimasol-button">Aplicacion</a>
-            <a href="/contactus" class="dimasol-bar-item dimasol-button">Contacto</a>
-        </div>
-        </div>
+     </div>
         @yield('content')
 </body>
 

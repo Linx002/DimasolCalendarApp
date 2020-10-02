@@ -9,9 +9,21 @@
             <li class="list-group-item"><h5>Compañia: </h5>{{$project->company}}</li>
             <li class="list-group-item"><h5>Area: </h5>{{$project->area}}</li>
             <li class="list-group-item"><h5>Requisitado por: </h5>{{$project->requisitedBy}}</li>
-            <li class="list-group-item"><h5>Area: </h5>{{$project->area}}</li>
+                    @php
+                    $utcDateTime = $project->startDate;
+                    $dateTime = $utcDateTime->toDateTime();
+                    $showStartDate = (string)$dateTime->format('d/m/y H:i:s');
+                    @endphp
+            <li class="list-group-item"><h5>Fecha de inicio: </h5>{{$showStartDate}}</li>
+                    @php
+                    $utcDateTime = $project->endDate;
+                    $dateTime = $utcDateTime->toDateTime();
+                    $showEndDate = (string)$dateTime->format('d/m/y H:i:s');
+                    @endphp
+            <li class="list-group-item"><h5>Fecha de finalización: </h5>{{$showEndDate}}</li>
             <li class="list-group-item"><h5>Proyecto creado por: </h5>{{$project->createdBy}}</li>
         </ul><br>
+
         <a href="/calendar/">Regreso al catálogo</a> |
         <a href="/calendar/edit/{{$project->_id}}">Edit</a> |
         <a href="/calendar/delete/{{$project->_id}}">Delete</a>

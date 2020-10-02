@@ -8,7 +8,6 @@
             <li class="list-group-item"><b>Descripcion: </b>{{$proyect->description}}</li>
             <li class="list-group-item"><b>Compañia: </b>{{$proyect->company}}</li>
             <li class="list-group-item"><b>Area: </b>{{$proyect->area}}</li>
-            <li class="list-group-item"><b>Area: </b>{{$proyect->area}}</li>
         </ul>
     </div>
 </div>
