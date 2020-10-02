@@ -25,8 +25,8 @@
         </ul><br>
 
         <a href="/calendar/">Regreso al catálogo</a> |
-        <a href="/calendar/edit/{{$project->_id}}">Edit</a> |
-        <a href="/calendar/delete/{{$project->_id}}">Delete</a>
+        <a href="/calendar/edit/{{$project->_id}}">Editar</a> |
+        <a href="/calendar/delete/{{$project->_id}}">Borrar</a>
     </div>
 </div>
 @endsection

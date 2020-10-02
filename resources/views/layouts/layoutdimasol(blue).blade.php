@@ -37,6 +37,13 @@
     .fa-coffee {
         font-size: 200px
     }
+    .button-radius{
+        border-radius: 12px;
+        background-color: white;
+        color: black;
+        border: 2px solid #008CBA;
+        transition-duration: 0.4s;
+        }
 </style>
 
 <body>

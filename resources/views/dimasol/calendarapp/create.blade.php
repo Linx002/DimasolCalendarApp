@@ -1,10 +1,9 @@
 @extends('layouts.layoutdimasol(blue)')
 @section('content')
-<div class="dimasol-row-padding dimasol-padding-32 dimasol-container">
+<div class="dimasol-row-padding dimasol-half dimasol-container">
     <h1 class="dimasol-margin dimasol-jumbo">DIMASOL Industrial</h1>
-    <form action="/calendar/create" method="POST" class="dimasol-row-padding dimasol-padding-32 dimasol-container">
+    <form action="/calendar/create" method="POST">
         @csrf
-        <div class="dimasol-container dimasol-half">
             <ul class="list-group list-group-flush">
                 <label for="name">Nombre del proyecto: </label>
                 <input class="form-control" type="text" name="projectName" id="projectName" required autofocus>
@@ -30,10 +29,8 @@
                 <label for="consumables">Requerirá consumibles?: </label>
                 <input class="dimasol-check" type="checkbox" name="name" id="name">
             </ul>
-        </div>
-
-    </form>
-   <button type="submit" class="btn btn-success">Create</button>
+    <button type="submit" class="btn btn-success">Create</button>
     <button type="reset" class="btn btn-warning">Reset</button>
-      </div>
-    @endsection
+    </form>
+</div>
+@endsection

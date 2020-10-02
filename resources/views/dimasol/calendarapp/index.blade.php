@@ -1,14 +1,14 @@
 @extends('layouts.layoutdimasol(blue)')
 @section('content')
-<div class="dimasol-row-padding dimasol-padding-32 dimasol-container">
-    <h1 class="dimasol-margin dimasol-jumbo">DIMASOL Industrial</h1>
+<div class="dimasol-row-padding dimasol-padding-64 dimasol-container">
+    <h2 class="dimasol-center dimasol-margin dimasol-jumbo">Índice de proyectos - DIMASOL Industrial</h2>
     <!-- Header -->
     <!-- <header class="dimasol-container dimasol-blue dimasol-center" style="padding:128px 16px">
     <img class="dimasol-image dimasol-auto" src="{{ url('/img/logo-dimasol.jpg') }}" alt="Logo DIMASOL">
     <h1 class="dimasol-margin dimasol-jumbo">DIMASOL Industrial</h1>
     </header>-->
     <!-- First Grid -->
-    <a href="/calendar/create" class="text-right">Nuevo proyecto</a>
+    <a href="/calendar/create" class="button-radius dimasol-blue dimasol-hover-white dimasol-button ">Nuevo proyecto</a>
     <div class="dimasol-row-padding dimasol-centered dimasol-padding-16 dimasol-container">
         <table class="dimasol-table">
             <thead class="dimasol-blue">

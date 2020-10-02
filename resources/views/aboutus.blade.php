@@ -10,9 +10,9 @@
     <h1>Valores:</h1>
     <p>Compromiso, responsabilidad, integridad, seguridad, excelencia, perseverancia e innovación.</p>
     <h1>Objetivo:</h1>
-    <li>-Ser una empresa competitiva en el sector industrial, respaldado por nuestra experiencia, personal y equipo.</li>
-    <li>-Impulsar a nuestros clientes para elegirnos como referente preferente en la elaboración de proyectos.</li>
-    <li>-Trabajar en conjunto con el cliente para cumplir lo solicitado en tiempo y forma.</li>
-    <li>-Exceder las expectativas que el cliente tiene sobre el servicio solicitado.</li>
+    <li>Ser una empresa competitiva en el sector industrial, respaldado por nuestra experiencia, personal y equipo.</li>
+    <li>Impulsar a nuestros clientes para elegirnos como referente preferente en la elaboración de proyectos.</li>
+    <li>Trabajar en conjunto con el cliente para cumplir lo solicitado en tiempo y forma.</li>
+    <li>Exceder las expectativas que el cliente tiene sobre el servicio solicitado.</li>
 </div>
 @endsection
