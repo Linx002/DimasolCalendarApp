@@ -1,10 +1,8 @@
 @extends('layouts.layoutdimasol(blue)')
 
 @section('content')
-<div class="dimasol-container">
     <div class="dimasol-row justify-content-center">
         <div class="dimasol-col.m8">
-            <div class="dimasol-row-padding dimasol-padding-64 dimasol-container">
                 <h2>Iniciar sesión</h2>
 
                 <div class="dimasol-row-padding dimasol-quarter dimasol-padding-8 dimasol-container">
@@ -59,8 +57,8 @@
                         </div>
                     </form>
                 </div>
-            </div>
+
         </div>
     </div>
-</div>
+
 @endsection

@@ -1,6 +1,7 @@
 @extends('layouts.layoutdimasol(blue)')
 @section('content')
-<div class="dimasol-row-padding dimasol-padding-64 dimasol-container">
+@if (Route::has('login'))
+@auth
     <h2 class="dimasol-center dimasol-margin dimasol-jumbo">Índice de proyectos - DIMASOL Industrial</h2>
     <!-- Header -->
     <!-- <header class="dimasol-container dimasol-blue dimasol-center" style="padding:128px 16px">
@@ -36,9 +37,9 @@
                     @endphp
                     <td>{{$showDate}}</td>
                     <td>
-                        <a href="/calendar/{{$project->_id}}">Detalles</a>
-                        <a href="/calendar/edit/{{$project->_id}}">Editar</a>
-                        <a href="/calendar/delete/{{$project->_id}}">Borrar</a>
+                        <a href="/calendar/{{$project->_id}}" class="dimasol-button dimasol-hover-white">Detalles</a>
+                        <a href="/calendar/edit/{{$project->_id}}" class="dimasol-button dimasol-hover-white">Editar</a>
+                        <a href="/calendar/delete/{{$project->_id}}" class="dimasol-button dimasol-hover-white">Borrar</a>
                     </td>
                 </tr>
                 @endforeach
@@ -60,4 +61,10 @@
         </div>
     </div>
 </div>
+@else
+                <h1>
+                    Necesita iniciar sesión para ver este contenido.
+                </h1>
+                    @endauth
+                    @endif
 @endsection

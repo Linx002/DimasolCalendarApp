@@ -13,8 +13,8 @@
 
 <!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment-with-locales.min.js"></script>
-<script src="fullcalendar/lib/jquery.min.js"></script>
-<script src="fullcalendar/fullcalendar.min.js"></script>
+<!-- <script src="fullcalendar/lib/jquery.min.js"></script>
+<script src="fullcalendar/fullcalendar.min.js"></script> -->
 
 <style>
     body,
@@ -44,17 +44,24 @@
         border: 2px solid #008CBA;
         transition-duration: 0.4s;
         }
+        .button-radius-danger{
+        border-radius: 12px;
+        background-color: white;
+        color: black;
+        border: 2px solid #d90202;
+        transition-duration: 0.4s;
+        }
 </style>
 
 <body>
-    <div class="dimasol-top dimasol-blue dimasol-rigth-align dimasol-hide-small">
+    <div class="dimasol-top dimasol-blue dimasol-hide-small">
         <div class="dimasol-container dimasol-bar dimasol-blue dimasol-card dimasol-left-align dimasol-large dimasol-hide-small">
             <a href="/" class="dimasol-bar-item dimasol-button dimasol-white">Inicio</a>
             <a href="/aboutus" class="dimasol-bar-item dimasol-button dimasol-hover-white">Acerca de </a>
             <a href="/areas" class="dimasol-bar-item dimasol-button dimasol-hover-white">Areas</a>
             <a href="/calendar" class="dimasol-bar-item dimasol-button dimasol-hover-white">Aplicacion</a>
             <a href="/contactus" class="dimasol-bar-item dimasol-button dimasol-hover-white">Contacto</a>
-            <div class="dimasol-dropdown-hover dimasol-light-blue">
+            <div class="dimasol-dropdown-hover dimasol-right-align dimasol-light-blue">
                 @if (Route::has('login'))
                 @auth
                 <button class="dimasol-hover-white dimasol-button">{{ Auth::user()->name }}</button>
@@ -75,7 +82,9 @@
             </div>
         </div>
      </div>
+     <div class="dimasol-row-padding dimasol-padding-64 dimasol-container">
         @yield('content')
+     </div>
 </body>
 
 </html>

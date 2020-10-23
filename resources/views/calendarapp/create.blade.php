@@ -4,6 +4,7 @@
     <h1 class="dimasol-margin dimasol-jumbo">DIMASOL Industrial</h1>
     <form action="/calendar/create" method="POST">
         @csrf
+        <p class="msg">{{session('msg')}}</p>
             <ul class="list-group list-group-flush">
                 <label for="name">Nombre del proyecto: </label>
                 <input class="form-control" type="text" name="projectName" id="projectName" required autofocus>
@@ -24,10 +25,19 @@
                 <input class="form-control" type="date" min="2020-09-01" name="startDate" id="startDate" required>
 
                 <label for="endDate">Fecha de finalizacion: </label>
-                <input class="form-control" type="date" name="endDate" id="endDate" required>
+                <input class="form-control" type="date" min="2020-09-01" name="endDate" id="endDate" required>
 
                 <label for="consumables">Requerirá consumibles?: </label>
-                <input class="dimasol-check" type="checkbox" name="name" id="name">
+                <input class="dimasol-check" type="checkbox" checked="checked" name="name" id="name"/>
+                @php
+                $startDateVar = date("Y-m-d\TH:i",$_POST['startDate']);
+                $endDateVar = date(DATE_ATOM,$_POST['endDate']);
+                @endphp
+
+                <input type="hidden" id="startDateUTC" value="{{$startDateVar}}">
+
+                <input type="hidden" id="endDateUTC" value="{{$endDateVar}}">
+
             </ul>
     <button type="submit" class="btn btn-success">Create</button>
     <button type="reset" class="btn btn-warning">Reset</button>

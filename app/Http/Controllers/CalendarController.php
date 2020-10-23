@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use MongoDB;
 use Illuminate\Http\Request;
 use MongoDB\Operation\FindOne;
+use App\Controllers\input;
+use Javascript;
 
 class CalendarController extends Controller
 {
@@ -16,37 +18,28 @@ class CalendarController extends Controller
         $projects = $collection->find([], ["limit" => 10, "skip" => ($pagina - 1) * 10]);
         $startDatevar = $collection->find(['startDate']);
         $endDatevar = $collection->find(['endDate']);
-        return view('dimasol.calendarapp.index', ['projects' => $projects, 'projectCount' => $projectCount]);
-    }
-
-    public function DetailsMaster($id)
-    {
-        $collection = (new MongoDB\Client)->DIMASOL->Projects;
-        $project = $collection->findOne(["_id" => new MongoDB\BSON\ObjectID($id)]);
-        return view('dimasol.calendarapp.detailsmaster', ['project' => $project]);
+        return view('calendarapp.index', ['projects' => $projects, 'projectCount' => $projectCount]);
     }
 
     public function Delete($id)
     {
         $collection = (new MongoDB\Client)->DIMASOL->Projects;
         $project = $collection->findOne(["_id" => new MongoDB\BSON\ObjectID($id)]);
-        return view('dimasol.calendarapp.delete', ['project' => $project]);
+        return view('calendarapp.delete', ['project' => $project]);
     }
 
     public function Remove()
     {
         $collection = (new MongoDB\Client)->DIMASOL->Projects;
-        $deleteOneResult = $collection->deleteOne(
-            ["_id" => new \MongoDB\BSON\ObjectId(request('projectid'))]
-        );
-        return redirect('/calendar/index');
+        $deleteOneResult = $collection->deleteOne(["_id" => new \MongoDB\BSON\ObjectId(request('projectid'))]);
+        return redirect('/calendar/index')->with('msg','Proyecto borrado correctamente!');
     }
 
     public function Create()
     {
         $collection = (new MongoDB\Client)->DIMASOL->Projects;
         $projects = $collection->find();
-        return view('dimasol.calendarapp.create', ["Projects"=>$projects]);
+        return view('calendarapp.create', ["Projects"=>$projects]);
     }
 
     //to store/edit/delete
@@ -59,21 +52,21 @@ class CalendarController extends Controller
             "description" => request("description"),
             "company" => request("company"),
             "area" => request("area"),
-            "startDate" => request("startDate"),
-            "endDate" => request("endDate"),
+            "startDate" =>request("startDateUTC"),
+            "endDate" => request("endDateUTC"),
             "requisitedBy" => request("requisitedBy"),
             "consumables" => request("consumables"),
         ];
         $collection = (new MongoDB\Client)->DIMASOL->Projects;
         $insertOneResult = $collection->insertOne($project);
-        return redirect("/calendar");
+        return redirect("/calendar")->with('msg','Proyecto guardado correctamente!');
     }
 
     public function Edit($id)
     {
         $collection = (new MongoDB\Client)->DIMASOL->Projects;
         $project = $collection->findOne(["_id" => new MongoDB\BSON\ObjectID($id)]);
-        return view('dimasol.calendarapp.edit', [
+        return view('calendarapp.edit', [
             "projectName" => $projectName,
             "description" => $description,
             "company" => $company,
@@ -115,5 +108,11 @@ class CalendarController extends Controller
         $collection = (new MongoDB\Client)->DIMASOL->Projects;
         $project = $collection->findOne(["_id" => new MongoDB\BSON\ObjectID($id)]);
         return view('calendarapp.detailsuser', ["project" => $project]);
+    }
+     public function DetailsMaster($id)
+    {
+        $collection = (new MongoDB\Client)->DIMASOL->Projects;
+        $project = $collection->findOne(["_id" => new MongoDB\BSON\ObjectID($id)]);
+        return view('calendarapp.detailsmaster', ['project' => $project]);
     }
 }

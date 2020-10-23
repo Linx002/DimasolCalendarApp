@@ -1,6 +1,5 @@
 @extends('layouts.layoutdimasol(blue)')
 @section('content')
-<div class="dimasol-row-padding dimasol-padding-64 dimasol-container">
     <h1>Areas de trabajo</h1>
     <p>Estas son lás diferentes áreas de trabajo con las que contamos para su servicio.
         <br>
@@ -83,5 +82,4 @@
             setTimeout(carousel, 2000); // Change image every 2 seconds
         }
     </script> -->
-</div>
 @endsection

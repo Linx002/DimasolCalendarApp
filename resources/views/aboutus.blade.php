@@ -1,6 +1,5 @@
 @extends('layouts.layoutdimasol(blue)')
 @section('content')
-<div class="dimasol-row-padding dimasol-padding-64 dimasol-container">
     <h1>Acerca de la empresa</h1>
     <p>El soporte técnico que ofrecemos está plenamente garantizado, pues contamos con 23 años de experiencia en el ramo de maquinados industriales y equipos de maquinaria pesada para la construcción. Como técnicos de tiempo completo contamos con amplia experiencia en manejo de soldadura de arco, micro alambre, soldadura tic y máquinas y herramientas.</p>
     <h1>Vision</h1>
@@ -14,5 +13,4 @@
     <li>Impulsar a nuestros clientes para elegirnos como referente preferente en la elaboración de proyectos.</li>
     <li>Trabajar en conjunto con el cliente para cumplir lo solicitado en tiempo y forma.</li>
     <li>Exceder las expectativas que el cliente tiene sobre el servicio solicitado.</li>
-</div>
 @endsection
