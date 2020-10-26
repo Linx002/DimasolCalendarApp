@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link href="https://fonts.googleapis.com/css2?family=Trispace&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Scripts -->
@@ -18,17 +19,19 @@
 
 <style>
     body,
-    h1,
     h2,
     h3,
     h4,
     h5,
     h6 {
-        font-family: "Lato", sans-serif
+        font-family: "Lato", sans-serif;
+    }
+
+    h1{
+        font-family: 'Trispace', sans-serif;
     }
 
     .dimasol-bar,
-    h1,
     button {
         font-family: "Montserrat", sans-serif
     }
@@ -85,6 +88,8 @@
      <div class="dimasol-row-padding dimasol-padding-64 dimasol-container">
         @yield('content')
      </div>
+
+
 </body>
 
 </html>

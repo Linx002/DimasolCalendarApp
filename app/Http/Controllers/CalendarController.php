@@ -32,7 +32,7 @@ class CalendarController extends Controller
     {
         $collection = (new MongoDB\Client)->DIMASOL->Projects;
         $deleteOneResult = $collection->deleteOne(["_id" => new \MongoDB\BSON\ObjectId(request('projectid'))]);
-        return redirect('/calendar/index')->with('msg','Proyecto borrado correctamente!');
+        return redirect('/calendar/index')->with('msg','Proyecto borrado correctamente!')->with("alerttype", "danger");
     }
 
     public function Create()
@@ -52,30 +52,21 @@ class CalendarController extends Controller
             "description" => request("description"),
             "company" => request("company"),
             "area" => request("area"),
-            "startDate" =>request("startDateUTC"),
-            "endDate" => request("endDateUTC"),
+            "startDate" =>request("startDateVar"),
+            "endDate" => request("endDateVar"),
             "requisitedBy" => request("requisitedBy"),
             "consumables" => request("consumables"),
         ];
         $collection = (new MongoDB\Client)->DIMASOL->Projects;
         $insertOneResult = $collection->insertOne($project);
-        return redirect("/calendar")->with('msg','Proyecto guardado correctamente!');
+        return redirect("/calendar")->with('msg','Proyecto guardado correctamente!')->with("alerttype", "primary");
     }
 
     public function Edit($id)
     {
         $collection = (new MongoDB\Client)->DIMASOL->Projects;
         $project = $collection->findOne(["_id" => new MongoDB\BSON\ObjectID($id)]);
-        return view('calendarapp.edit', [
-            "projectName" => $projectName,
-            "description" => $description,
-            "company" => $company,
-            "area" => $area,
-            "startDate" => $startDate,
-            "endDate" => $endDate,
-            "requisitedBy" => $requisitedBy,
-            "consumables" => $consumables
-        ]);
+        return view('calendarapp.edit', ['project' => $project]);
     }
 
     public function Update()
@@ -86,8 +77,8 @@ class CalendarController extends Controller
             "description" => request("description"),
             "company" => request("company"),
             "area" => request("area"),
-            "startDate" => request("startDate"),
-            "endDate" => request("endDate"),
+            "startDate" => request("startDatevar"),
+            "endDate" => request("endDateVar"),
             "requisitedBy" => request("requisitedBy"),
             "consumables" => request("consumables"),
         ];
@@ -96,11 +87,7 @@ class CalendarController extends Controller
         ], [
             '$set' => $project
         ]);
-        // if ($updateOneResult->getModifiedCount() == 1)
-        //     return redirect(route('GameUpdated'))->with('mssg', "Game updated")->with("alerttype", "success");
-        // else
-        //     return redirect(route('GameUpdated'))->with('mssg', "Update unsuccesful. Try again later.")->with("alerttype", "warning");
-        return redirect('/calendar' . request("projectid"));
+        return redirect('/calendar')->with('msg','Proyecto editado correctamente!')->with("alerttype", "primary");
     }
 
     public function UserDetails($id)

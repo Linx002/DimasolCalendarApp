@@ -1,7 +1,9 @@
 @extends('layouts.layoutdimasol(blue)')
 @section('content')
+@if (Route::has('login'))
+@auth
 <div class="dimasol-row-padding dimasol-padding-32 dimasol-container">
-    <h1 class="dimasol-margin dimasol-jumbo">DIMASOL Industrial</h1>
+    <h1 class="dimasol-margin">Detalles del Proyecto</h1>
     <div class="dimasol-container dimasol-half">
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><h5>Nombre del projecto: </h5>{{$project->projectName}}</li>
@@ -29,4 +31,10 @@
         <a href="/calendar/delete/{{$project->_id}}">Borrar</a>
     </div>
 </div>
+@else
+                <h1>
+                    Necesita iniciar sesión para ver este contenido.
+                </h1>
+                    @endauth
+                    @endif
 @endsection

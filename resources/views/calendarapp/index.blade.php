@@ -2,13 +2,14 @@
 @section('content')
 @if (Route::has('login'))
 @auth
-    <h2 class="dimasol-center dimasol-margin dimasol-jumbo">Índice de proyectos - DIMASOL Industrial</h2>
+    <h2 class="dimasol-center dimasol-margin">Índice de proyectos - DIMASOL Industrial</h2>
     <!-- Header -->
     <!-- <header class="dimasol-container dimasol-blue dimasol-center" style="padding:128px 16px">
     <img class="dimasol-image dimasol-auto" src="{{ url('/img/logo-dimasol.jpg') }}" alt="Logo DIMASOL">
     <h1 class="dimasol-margin dimasol-jumbo">DIMASOL Industrial</h1>
     </header>-->
     <!-- First Grid -->
+    <p class="msg">{{ session('msg') }}</p>
     <a href="/calendar/create" class="button-radius dimasol-blue dimasol-hover-white dimasol-button ">Nuevo proyecto</a>
     <div class="dimasol-row-padding dimasol-centered dimasol-padding-16 dimasol-container">
         <table class="dimasol-table">
@@ -18,7 +19,8 @@
                     <th scope="col">Nombre del proyecto</th>
                     <th scope="col">Descripcion del proyecto</th>
                     <th scope="col">Compañia</th>
-                    <th scope="col">Fecha de Inicio</th>
+                    <th scope="col">Estatus</th>
+                    {{-- <th scope="col">Fecha de Inicio</th> --}}
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
@@ -29,19 +31,30 @@
                     <td>{{$project->projectName}}</td>
                     <td>{{$project->description}}</td>
                     <td>{{$project->company}}</td>
-                    <!--<td>{{$project->area}}</td>-->
                         @php
-                    $utcDateTime = $project->startDate;
+                    $today = date(DATE_ATOM);
+                    $utcDateTime = $project->endDate;
                     $dateTime = $utcDateTime->toDateTime();
-                    $showDate = (string)$dateTime->format('d/m/y H:i:s');
+                    $dateToCompare = (string)$dateTime->format('d/m/yy');
+
+                    if ($dateToCompare<$today){
+                        $status="Projecto terminado";
+                    }
+                    else if($dateToCompare==$today){
+                        $status="Projecto termina hoy";
+                    }
+                    else{
+                        $status="Projecto en producción";
+                    }
                     @endphp
-                    <td>{{$showDate}}</td>
+                    <td>{{$status}}</td>
                     <td>
                         <a href="/calendar/{{$project->_id}}" class="dimasol-button dimasol-hover-white">Detalles</a>
                         <a href="/calendar/edit/{{$project->_id}}" class="dimasol-button dimasol-hover-white">Editar</a>
                         <a href="/calendar/delete/{{$project->_id}}" class="dimasol-button dimasol-hover-white">Borrar</a>
                     </td>
                 </tr>
+
                 @endforeach
 
             </tbody>
@@ -56,7 +69,7 @@
                     @for ($i = 1; $i <= ceil($projectCount/600);$i++) <a href="/calendar?pag={{$i}}" class="btn btn-secondary {{ $pagactual == $i ? 'disabled' : ''}}">{{$i}}</a>
                     @endfor
                     <a href="/calendar?pag={{$pagactual+1}}" class="btn btn-secondary {{ $pagactual == ceil($projectCount/600) ? 'disabled' : ''}}">&gt</a>
-                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -67,4 +80,5 @@
                 </h1>
                     @endauth
                     @endif
+                    @include('layouts.lowerbar')
 @endsection

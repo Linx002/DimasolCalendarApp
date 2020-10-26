@@ -27,8 +27,13 @@
         <button class="dimasol-button demo" onclick="currentDiv(5)">5</button>
         <button class="dimasol-button demo" onclick="currentDiv(6)">6</button>
         <button class="dimasol-button demo" onclick="currentDiv(7)">7</button>
-
     </div>
+    @if (Route::has('login'))
+@auth
+    <a href="/album" class="dimasol-button">Crear album</a>
+    @else
+    @endif
+    @endauth
     <!-- Slideshow con botones -->
     <script>
         var slideIndex = 1;
@@ -82,4 +87,5 @@
             setTimeout(carousel, 2000); // Change image every 2 seconds
         }
     </script> -->
+    @include('layouts.lowerbar')
 @endsection
