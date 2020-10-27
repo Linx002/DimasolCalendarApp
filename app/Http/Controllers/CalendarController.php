@@ -16,8 +16,6 @@ class CalendarController extends Controller
         $projectCount = $collection->count();
         $pagina = request("pag") == 0 ? 1 : request("pag");
         $projects = $collection->find([], ["limit" => 10, "skip" => ($pagina - 1) * 10]);
-        $startDatevar = $collection->find(['startDate']);
-        $endDatevar = $collection->find(['endDate']);
         return view('calendarapp.index', ['projects' => $projects, 'projectCount' => $projectCount]);
     }
 
@@ -39,7 +37,9 @@ class CalendarController extends Controller
     {
         $collection = (new MongoDB\Client)->DIMASOL->Projects;
         $projects = $collection->find();
-        return view('calendarapp.create', ["Projects"=>$projects]);
+        $startDatevar = request("startDateUTC");
+        $endDatevar = request("endDateUTC");
+        return view('calendarapp.create', ["Projects"=>$projects, $startDatevar => 'startDateUTC', $endDatevar => 'endDateUTC']);
     }
 
     //to store/edit/delete
@@ -52,8 +52,8 @@ class CalendarController extends Controller
             "description" => request("description"),
             "company" => request("company"),
             "area" => request("area"),
-            "startDate" =>request("startDateVar"),
-            "endDate" => request("endDateVar"),
+            "startDate" =>request("startDateUTC"),
+            "endDate" => request("endDateUTC"),
             "requisitedBy" => request("requisitedBy"),
             "consumables" => request("consumables"),
         ];

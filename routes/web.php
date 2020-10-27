@@ -43,6 +43,8 @@ Route::get('/calendar/{id}', 'CalendarController@DetailsMaster');
 
 //Album routes
 
-Route::get('/album', function () {
-    return view('album.createalbumform');
-});
+Route::get('/album', 'AlbumsController@Index');
+
+Route::get('/album/create', 'AlbumsController@Create');
+
+Route::post('/album/store', 'AlbumsController@Store');

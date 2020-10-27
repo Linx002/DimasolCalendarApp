@@ -30,7 +30,7 @@
     </div>
     @if (Route::has('login'))
 @auth
-    <a href="/album" class="dimasol-button">Crear album</a>
+    <a href="/album/create" class="button-radius dimasol-blue dimasol-hover-white dimasol-button">Crear album</a>
     @else
     @endif
     @endauth

@@ -1,4 +1,4 @@
-<div class="dimasol-light-blue dimasol-row dimasol-padding-32 dimasol-container">
+<div class="dimasol-light-blue dimasol-col dimasol-padding-32 dimasol-container">
     <div class="dimasol-twothird dimasol-col"></div>
     <div class="dimasol-rest dimasol-container dimasol-right" id="contact">
         <h2>Contacto</h2>

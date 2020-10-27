@@ -36,6 +36,13 @@
                     $utcDateTime = $project->endDate;
                     $dateTime = $utcDateTime->toDateTime();
                     $dateToCompare = (string)$dateTime->format('d/m/yy');
+                    /*
+$dateInUTC=$time;
+$time = strtotime($dateInUTC.' UTC');
+$dateInLocal = date("Y-m-d H:i:s", $time);
+echo $dateInLocal;
+
+                    */
 
                     if ($dateToCompare<$today){
                         $status="Projecto terminado";
