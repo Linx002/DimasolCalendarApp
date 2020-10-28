@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhotosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -43,8 +44,28 @@ Route::get('/calendar/{id}', 'CalendarController@DetailsMaster');
 
 //Album routes
 
-Route::get('/album', 'AlbumsController@Index');
+Route::get('/areas', 'AlbumsController@Index');
 
-Route::get('/album/create', 'AlbumsController@Create');
+Route::get('/album/admin', 'AlbumsController@Admin');
 
 Route::post('/album/store', 'AlbumsController@Store');
+
+Route::get('/album/{id}', 'AlbumsController@Show');
+
+Route::post('/album/edit', 'AlbumsController@Update');
+
+Route::get('/album/edit/{id}', 'AlbumsController@Edit');
+
+Route::delete('/album/delete', 'AlbumsController@Delete');
+
+Route::get('/album/delete/{id}', 'AlbumsController@Remove');
+
+//Photos routes
+
+Route::get('/photo/add/{id}', 'PhotosController@Add');
+
+Route::post('/photo/store/', 'PhotosController@Store');
+
+Route::post('/photo/{id}/', 'PhotosController@Show');
+
+Route::delete('/photo/{id}', 'PhotosController@Remove');

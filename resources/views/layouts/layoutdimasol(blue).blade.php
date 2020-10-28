@@ -57,7 +57,7 @@
 </style>
 
 <body>
-    <div class="dimasol-top dimasol-blue dimasol-hide-small">
+    <div class="dimasol-top dimasol-blue navbar-fixed-top dimasol-hide-small">
         <div class="dimasol-container dimasol-bar dimasol-blue dimasol-card dimasol-left-align dimasol-large dimasol-hide-small">
             <a href="/" class="dimasol-bar-item dimasol-button dimasol-white">Inicio</a>
             <a href="/aboutus" class="dimasol-bar-item dimasol-button dimasol-hover-white">Acerca de </a>

@@ -56,7 +56,7 @@ echo $dateInLocal;
                     @endphp
                     <td>{{$status}}</td>
                     <td>
-                        <a href="/calendar/{{$project->_id}}" class="dimasol-button dimasol-hover-white">Detalles</a>
+                        <a href="/calendar/{{$album->_id}}" class="dimasol-button dimasol-hover-white">Detalles</a>
                         <a href="/calendar/edit/{{$project->_id}}" class="dimasol-button dimasol-hover-white">Editar</a>
                         <a href="/calendar/delete/{{$project->_id}}" class="dimasol-button dimasol-hover-white">Borrar</a>
                     </td>
