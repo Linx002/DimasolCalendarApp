@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Photos;
 
 class PhotosController extends Controller
@@ -35,5 +36,15 @@ class PhotosController extends Controller
             $photo->save();
 
         return redirect('/album/'.$request->input('album_id'))->with('msg', 'Fotos agregadas correctamente');
+    }
+
+    public function Delete($id){
+        $photo = Photos::find($id);
+
+        if(Storage::delete('public/photos/'.$photo->album_id.'/'.$photo->photo)){
+            $photo->delete();
+
+            return redirect('/album/admin')->with('msg', 'Foto eliminada correctamente');
+        }
     }
 }

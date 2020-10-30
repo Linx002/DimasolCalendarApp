@@ -56,16 +56,18 @@ Route::post('/album/edit', 'AlbumsController@Update');
 
 Route::get('/album/edit/{id}', 'AlbumsController@Edit');
 
-Route::delete('/album/delete', 'AlbumsController@Delete');
+Route::get('/album/delete/{id}', 'AlbumsController@Delete');
 
-Route::get('/album/delete/{id}', 'AlbumsController@Remove');
+Route::delete('/album/delete', 'AlbumsController@Remove');
+
+
 
 //Photos routes
 
 Route::get('/photo/add/{id}', 'PhotosController@Add');
 
-Route::post('/photo/store/', 'PhotosController@Store');
+Route::post('/photo/store', 'PhotosController@Store');
 
-Route::post('/photo/{id}/', 'PhotosController@Show');
+Route::post('/photo/{id}', 'PhotosController@Show');
 
-Route::delete('/photo/{id}', 'PhotosController@Remove');
+Route::delete('/photo/delete', 'PhotosController@Delete');

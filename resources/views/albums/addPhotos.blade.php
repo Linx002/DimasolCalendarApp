@@ -6,7 +6,7 @@
 <h1>Agregar fotos al álbum </h1>
 <div class="dimasol-quarter dimasol-container"></div>
 <div class="dimasol-col dimasol-col-padding dimasol-container dimasol-padding-16">
-    <div class="dimasol-container dimasol-padding-32 dimasol-blue-gray dimasol-col dimasol-half">
+    <div class="dimasol-container dimasol-padding-32 dimasol-pale-green dimasol-col dimasol-half">
         <div class="dimasol-container dimasol-col">
             <form action="/photo/store" enctype="multipart/form-data" method="POST">
                 @csrf
@@ -27,7 +27,7 @@
     </div>
 </div>
 <br>
-<a href="/album/admin" class="btn button-radius btn-link">Regresar a administrar</a>
+<a href="/album/admin" class="btn button-radius btn-primary">Regresar a administrar</a>
 @else
 <h1>
     Necesita iniciar sesión para ver este contenido.

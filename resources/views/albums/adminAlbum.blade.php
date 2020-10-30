@@ -3,6 +3,13 @@
 @if (Route::has('login'))
 @auth
 <meta name="csrf-token" value="{{ csrf_token() }}" />
+@if (session('msg'))
+<div class="dimasol-panel dimasol-blue dimasol-display-container">
+    <span onclick="this.parentElement.style.display='none'" class="dimasol-button dimasol-large dimasol-display-topright">&times;</span>
+<h3> Información! </h3>
+    <p class="msg">{{ session('msg') }}</p>
+</div>
+@endif
 <h1>Administracion de albums</h1>
 <div class="dimasol-col dimasol-col-padding dimasol-container dimasol-padding-16">
     <div class="dimasol-container dimasol-padding-32 dimasol-blue-gray dimasol-col dimasol-half">
@@ -36,11 +43,9 @@
                     @foreach($albums as $album)
                 <tr>
                     <th scope="row">{{$loop->index+1}}</th>
-                    <td>{{$album->albumName}}</td>
+                    <td><a href="/album/{{$album->id}}" class="dimasol-button dimasol-hover-white">{{$album->albumName}}</a></td>
                     <td>
-                        <a href="/album/{{$album->id}}" class="dimasol-button dimasol-hover-white">Ver album</a>
                         <a href="/photo/add/{{$album->id}}" class="dimasol-button dimasol-hover-white">Agregar fotos</a>
-                        <a href="/album/edit/{{$album->id}}" class="dimasol-button dimasol-hover-white">Editar</a>
                         <a href="/album/delete/{{$album->id}}" class="dimasol-button dimasol-hover-white">Borrar</a>
                     </td>
                 </tr>

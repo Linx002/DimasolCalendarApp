@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Album;
+use App\Photos;
 
 class AlbumsController extends Controller
 {
@@ -46,17 +48,13 @@ class AlbumsController extends Controller
 
         return redirect('/album/admin')->with('msg', 'Album creado correctamente');
     }
+
     public function Show($id){
     $album = Album::with('Photos')->find($id);
     return view ('albums.showAlbum', ['album' => $album]);
     }
 
-    public function Edit($id){
-    $album = Album::with('Photos')->find($id);
-    return view ('albums.editAlbum', ['album' => $album]);
-    }
-
-    public function Remove($id){
+    public function Delete($id){
     $album = Album::with('Photos')->find($id);
     return view ('albums.deleteAlbum', ['album' => $album]);
     }
@@ -64,5 +62,12 @@ class AlbumsController extends Controller
     public function Add($id){
         $album = Album::with('Photos')->find($id);
         return view ('albums.addPhotos', ['album' => $album]);
-        }
+    }
+
+    public function Remove($id){
+    $album = Album::with('Photos')->find($id);
+
+    if(Storage::delete('public/'.$album->id)){ $album->delete();
+        return redirect('/album/admin')->with('msg', 'Foto eliminada correctamente');}
+    }
 }
